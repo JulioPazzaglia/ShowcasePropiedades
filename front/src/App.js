@@ -40,8 +40,8 @@ function App() {
           render={({ match }) => <SingleHouse PropiedadId={match.params.id} />}
         />
         <Route
-          path="/filter/:name"
-          render={({ match }) => <Filter Filter={match.params.name}/>}
+          path="/find/:key/:filtro"
+          render={({ match }) => <Filter params = {match.params}/>}
         />
         <Route
           path="/login"

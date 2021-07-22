@@ -39,7 +39,7 @@ const Sidebar = () => {
           {categorys.map((cat)=>{
             return (
               <p key={cat.id}>
-                <Link to= {`/filter/${cat.name}`}>{cat.name}</Link>
+                <Link to= {`/find/category/${cat.name}`}>{cat.name}</Link>
               </p>
             )})
           }
@@ -50,10 +50,18 @@ const Sidebar = () => {
         {/* Locacion */}
         <section>
           <h2>Locacion</h2>
-          <p>Belgrano</p>
-          <p>Paleremo</p>
-          <p>Recoleta</p>
-          <p>Retiro</p>
+          <p>
+            <Link to= {`/find/location/Belgrano`}>Belgrano</Link>
+          </p>
+          <p>
+            <Link to= {`/find/location/Palermo`}>Palermo</Link>
+          </p>
+          <p>
+            <Link to= {`/find/location/Recoleta`}>Recoleta</Link>
+          </p>
+          <p>
+            <Link to= {`/find/location/Retiro`}>Retiro</Link>
+          </p>
         </section>
 
       {/* Logging and such */}

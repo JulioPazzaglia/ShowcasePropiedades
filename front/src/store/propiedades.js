@@ -9,8 +9,13 @@ export const getFiltered = createAsyncThunk("GET_FILTERED", (filter)=>{
   return axios.get(`/api/category/${filter}`).then(res => res.data)
 })
 
+export const getByLocation = createAsyncThunk("GET_BY_LOCATION",(filter)=>{
+  return axios.get(`/api/find/${filter}`).then(res => res.data)
+})
+
 const propiedadesReducer = createReducer([], {
   [getPropiedades.fulfilled]: (state, action) => action.payload,
+  [getByLocation.fulfilled]: (state, action) => action.payload,
   [getFiltered.fulfilled]: (state, action) => action.payload,
 })
 
