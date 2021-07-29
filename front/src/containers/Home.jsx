@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 import { getPropiedades } from "../store/propiedades"
-import HouseDisplay from "../containers/HouseDisplay"
+import HouseDisplay from "../components/HouseDisplay"
 
 import style from "../styles/home.module.css"
 
@@ -17,7 +17,7 @@ const Home = () => {
 
     return (
         <div className = {style.container}>
-            <h1>Aca va a mostrar todos las propiedades</h1>
+            <h1>Todas las propiedades nuestras:</h1>
             <br />
             <HouseDisplay props ={propiedades}/>
         </div>

@@ -50,3 +50,20 @@
   justify-content: center;
   align-items: center;
 }
+.imageDisplay{
+  background-color: aliceblue;
+  padding: 2px;
+  width: 80%;
+}
+
+.loggin{
+  border-radius: 7px;
+  color: black;
+  background-color: #9d9fa0;
+  padding: 2%;
+  margin: 2%;
+  width: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

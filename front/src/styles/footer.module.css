@@ -24,3 +24,9 @@
   align-items: center;
   height: 150%;
 }
+.centro{
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin: 0%;
+}

@@ -12,7 +12,10 @@ const Sidebar = () => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    if (user.id) dispatch(userLogout())
+    if (user.id) {
+      dispatch(userLogout())
+      alert("Fuiste deslogeado")
+    }
   }
   useEffect(() => {
     dispatch(getCategorys())
@@ -63,7 +66,16 @@ const Sidebar = () => {
             <Link to= {`/find/location/Retiro`}>Retiro</Link>
           </p>
         </section>
+        <br />
+        <hr />
 
+        <section>
+        {user.id && (
+          <Link>
+            <h1>Favoritos</h1>
+          </Link>
+        )}
+        </section>
       {/* Logging and such */}
       <div className={styles.log}>
         <Link className={styles.loggin} to={`/${user.id ? "" : "login"}`} onClick={handleLogout}> {user.id ? "Log out" : "Log in"} </Link>

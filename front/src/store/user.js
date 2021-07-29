@@ -12,7 +12,7 @@ export const userLogin = createAsyncThunk("userLogin", user => {
       return res.data
     })
     .catch(err => {
-      console.log("No se puedo logear ", err)
+      console.log(err)
     })
 })
 
@@ -20,7 +20,6 @@ export const cookiesUser = createAction("cookiesUser", user => ({ payload: user 
 
 export const userLogout = createAsyncThunk("userLogout", () => {
   return axios.post("api/user/logout").then(res => {
-    console.log("desloggeado")
     return res.data
   })
 })

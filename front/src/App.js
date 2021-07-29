@@ -1,40 +1,44 @@
-import { React } from "react" //useEffect
+import { React, useEffect } from "react" //useEffect
 import { Route, Switch } from "react-router"
-// import axios from "axios"
-// import { useDispatch, useSelector } from "react-redux"
+import axios from "axios"
+import { useSelector, useDispatch } from "react-redux" //useDispatch
 
-// import { cookiesUser } from "./store/user"
+import { cookiesUser } from "./store/user"
 import "./App.css"
 
 //components
-import Sidebar from "./components/Sidebar"
-import Footer from "./components/Footer"
-import Home from "./components/Home"
-import SingleHouse from "./components/SingleHouse"
-import Filter from "./components/Filter"
-import Login from './components/Login'
-import Register from './components/Register'
+import Sidebar from "./containers/Sidebar"
+import Footer from "./containers/Footer"
+import Home from "./containers/Home"
+import SingleHouse from "./containers/SingleHouse"
+import Filter from "./containers/Filter"
+import Login from './containers/Login'
+import Register from './containers/Register'
+import AdminCenter from "./containers/AdminCenter"
+import Users from "./containers/Users"
 
 function App() {
+  const dispatch = useDispatch()
+  const isAdmin = useSelector(state => state.user)
 
-  // const dispatch = useDispatch()
-  // const isAdmin = useSelector(state => state.user)
-
-  // useEffect(() => {
-  //   axios
-  //     .get("api/me")
-  //     .then(res => res.data)
-  //     .then(user => {
-  //       dispatch(cookiesUser(user))
-  //     })
-  // }, [dispatch])
+  useEffect(() => {
+    axios
+      .get("api/me")
+      .then(res => res.data)
+      .then(user => {
+        dispatch(cookiesUser(user))
+      })
+  }, [dispatch])
 
   return ( 
     <div>
       <Sidebar />
           
       <Switch>
-        <Route exact path="/" component={Home} />
+      <Route
+          exact path="/"
+          render={() => <Home/>}
+        />
         <Route
           path="/propiedades/:id"
           render={({ match }) => <SingleHouse PropiedadId={match.params.id} />}
@@ -51,6 +55,14 @@ function App() {
           path="/register"
           render={() => <Register/>}
         />
+        <Route
+          path="/admin"
+          render={() => <AdminCenter/>}
+        />
+        {isAdmin && <Route
+          path="/users"
+          render={() => <Users/>}
+        />}
       </Switch>
 
       <Footer/>

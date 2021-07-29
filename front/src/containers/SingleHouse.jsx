@@ -21,7 +21,7 @@ const SingleHouse= (props) => {
         <div className = {style.container}>
             <h1>{casaShow.name}</h1>
             <hr />
-            <img src = {`${casaShow.image}`} alt="casa" /> 
+            <img className = {style.imageDisplay} src = {`${casaShow.image}`} alt="casa" /> 
             <h3>Precio: usd ${casaShow.price}</h3>
             <h3>{casaShow.description}</h3>
             <Link to="/">Volver al home</Link>

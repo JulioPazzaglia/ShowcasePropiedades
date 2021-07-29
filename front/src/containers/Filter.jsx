@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 import { getFiltered, getByLocation } from "../store/propiedades"
-import HouseDisplay from "../containers/HouseDisplay"
+import HouseDisplay from "../components/HouseDisplay"
 
 import style from "../styles/home.module.css"
 
