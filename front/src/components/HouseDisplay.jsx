@@ -5,7 +5,12 @@ import style from "../styles/home.module.css"
 
 const HouseDisplay= (props) => {
 
-    const propiedades = props.props
+    var propiedadesRaw = props.propiedades
+    const filtro = props.filtro
+
+    var propiedades = propiedadesRaw.slice(0,propiedadesRaw.length)
+
+    filtro?propiedades.sort((firstItem, secondItem) => secondItem.price - firstItem.price):propiedades.sort((firstItem, secondItem) => firstItem.price - secondItem.price)
 
     return (
         <div>

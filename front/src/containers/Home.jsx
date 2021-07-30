@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 import { getPropiedades } from "../store/propiedades"
@@ -8,6 +8,7 @@ import style from "../styles/home.module.css"
 
 const Home = () => {
     const dispatch = useDispatch()
+    const [minMax, setminMax] = useState(true)
 
     useEffect(() => {
         dispatch(getPropiedades())
@@ -15,11 +16,15 @@ const Home = () => {
 
     const propiedades = useSelector(state => state.propiedades)
 
+    const changeMinMax = () => {
+        setminMax(!minMax)
+    }
+
     return (
         <div className = {style.container}>
             <h1>Todas las propiedades nuestras:</h1>
-            <br />
-            <HouseDisplay props ={propiedades}/>
+            <button className={style.minMax} onClick = {changeMinMax} >{minMax?"⬇":"⬆"}</button>
+            <HouseDisplay propiedades ={propiedades} filtro = {minMax}/>
         </div>
     )
 }

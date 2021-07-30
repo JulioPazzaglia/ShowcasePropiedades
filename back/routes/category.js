@@ -51,4 +51,19 @@ router.get('/:category', (req, res, next)=>{
     })
 })
 
+router.delete('/link', (req, res, next)=>{
+    const propiedadId = req.body.id
+    const categoria = req.body.category
+
+    Houses.findByPk(propiedadId)
+    .then(house => {
+        Category.findByPk(categoria)
+        .then(category =>{
+            category.removeUser(house)
+            .then(() => res.status(201).send("deslinkeado"))
+        })
+    })
+    .catch(err => next(err))
+})
+
 module.exports = router
