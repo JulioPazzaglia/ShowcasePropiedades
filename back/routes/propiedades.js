@@ -1,8 +1,14 @@
 const router = require("express").Router()
-const {Houses} = require("../models")
+const {Houses, User} = require("../models")
 
 router.get('/', (req, res, next)=>{
-    Houses.findAll()
+    Houses.findAll({
+        include: [
+          {
+            model: User
+          }
+        ]
+      })
     .then((propiedades)=>{
         res.status(200).send(propiedades)
     })
