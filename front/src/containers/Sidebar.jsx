@@ -71,7 +71,7 @@ const Sidebar = () => {
 
         <section>
         {user.id && (
-          <Link>
+          <Link to = {`/find/favorites/${user.id}`}>
             <h1>Favoritos</h1>
           </Link>
         )}

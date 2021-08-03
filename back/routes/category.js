@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const {Houses, Category} = require("../models")
+const {Houses, Category, User} = require("../models")
 
 router.get('/', (req, res, next)=>{
     Category.findAll()
@@ -39,7 +39,11 @@ router.get('/:category', (req, res, next)=>{
       include: [
         {
           model: Category,
+        //   model: User,
           where: { name: category }
+        },
+        {
+            model: User,
         }
       ]
     })

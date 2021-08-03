@@ -1,22 +1,28 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useSelector} from "react-redux"
+
 
 import style from "../styles/home.module.css"
 
 const HouseDisplay= (props) => {
-
+    
     const user = useSelector(state => state.user)
 
     var propiedadesRaw = props.propiedades
-    const filtro = props.filtro
     var propiedades = propiedadesRaw.slice(0,propiedadesRaw.length)
+    
+    const filtro = props.filtro
+    const addFavs = props.AddFavs
+    const delFavs = props.DelFavs
 
     filtro?propiedades.sort((firstItem, secondItem) => secondItem.price - firstItem.price):propiedades.sort((firstItem, secondItem) => firstItem.price - secondItem.price)
+    
 
     return (
         <div>
-            {propiedades.map((casa)=>{
+            {!propiedades.length>0&& <h1>No parecen haber propiedades</h1>}
+            {propiedades.length>0 && propiedades.map((casa)=>{
                 return (
                     <div key={casa.id}>
                             <hr />
@@ -34,16 +40,10 @@ const HouseDisplay= (props) => {
                                     </div>
                                     { casa.users.find(element=>element.id===user.id) && (
                                         <button 
-                                        className={style.buttons} 
-                                        onClick={()=> {
-                                            console.log(`agrega a estos house: ${casa.id}, user: ${user.id}`)
-                                        }}
-                                        >
-                                            Eliminar de favoritos
-                                        </button>
+                                        className={style.buttons} onClick={()=> {delFavs(casa.id, user.id)}}>Eliminar de favoritos</button>
                                     )}
                                     { !casa.users.find(element=>element.id===user.id) && (
-                                        <button className={style.buttons} onClick={()=>{console.log("Click! agrega")}}>Agregar a favoritos</button>
+                                        <button className={style.buttons} onClick={()=>{user.id?addFavs(casa.id, user.id):alert("necesitas estar loggeado para agregar propiedades a favoritos")}} >Agregar a favoritos</button>
                                     )}
                                 </div>
                             </div>

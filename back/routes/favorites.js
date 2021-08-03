@@ -17,8 +17,8 @@ router.put('/', (req, res, next)=>{
     .catch(err => next(err))
 })
 
-router.get('/', (req, res, next)=>{
-    const userID = req.body.userId
+router.get('/:id', (req, res, next)=>{
+    const userID = req.params.id
 
     Houses.findAll({
       include: [
@@ -36,9 +36,9 @@ router.get('/', (req, res, next)=>{
     })
 })
 
-router.delete('/', (req, res, next)=>{
-    const LoggedUserId = req.body.userId;
-    const houseId = req.body.houseId;
+router.delete('/:user/:house', (req, res, next)=>{
+    const LoggedUserId = req.params.user;
+    const houseId = req.params.house;
 
     User.findByPk(LoggedUserId)
     .then(user => {
@@ -47,6 +47,7 @@ router.delete('/', (req, res, next)=>{
             house.removeUser(user)
             .then(() => res.status(201).send("eliminado"))
         })
+        .catch(err => next(err))
     })
     .catch(err => next(err))
 })

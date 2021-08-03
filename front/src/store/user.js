@@ -9,10 +9,10 @@ export const userLogin = createAsyncThunk("userLogin", user => {
   return axios
     .post("/api/user/login", user)
     .then(res => {
-      return res.data
+      return res.data;
     })
     .catch(err => {
-      console.log(err)
+      return err;
     })
 })
 

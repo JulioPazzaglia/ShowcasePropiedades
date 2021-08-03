@@ -16,8 +16,8 @@ const LogIn = () => {
   const handleClick = e => {
     e.preventDefault()
     dispatch(userLogin({ email, password })).then(({ payload }) => {
-      if (payload) {
-        alert("Bienvenido!")
+      if (payload.id) {
+        alert(`Bienvenido ${payload.fullname}!`)
         setTimeout(() => history.push("/"), 0)
       }
       else{alert("Los datos ingresados no son correctos")}

@@ -50,14 +50,4 @@ router.delete('/delete/:id', (req, res, next)=>{
     .catch(err => next(err))
 })
 
-router.get('/find', (req, res, next)=>{
-    const comp = req.body;
-    
-    Houses.findAll({where: comp})
-    .then((propiedades)=>{
-        res.status(200).send(propiedades)
-    })
-    .catch(err => next(err))
-})
-
 module.exports = router
