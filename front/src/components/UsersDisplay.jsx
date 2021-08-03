@@ -14,12 +14,15 @@ const HouseDisplay= (props) => {
                     <div>
                         <hr />
                         <div key={user.id} className = {style.display}>
-                            <h1 className = {style.item}>Nombre de usuario: {user.fullname}</h1>
+                            <div className = {style.variant}>
+                                <p className = {style.hola} >Nombre de usuario: {user.fullname}</p>
+                                <p className = {style.hola}>Email de usuario: {user.email}</p>
+                                <p className = {style.hola}>ID: {user.id}</p>
+                            </div>
                             <hr />
                             <div className = {style.item}>
-                                <h2>Email de usuario: {user.email}</h2>
-                                <h2>ID: {user.id}</h2>
-                                <h2>IsAdmin: {String(user.isAdmin)}</h2>
+                                <p>IsAdmin: {String(user.isAdmin)}</p>
+                                <p>delete: {String(user.isAdmin)}</p>
                             </div>
                         </div>
                     </div>

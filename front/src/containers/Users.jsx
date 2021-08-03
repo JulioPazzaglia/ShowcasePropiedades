@@ -21,9 +21,8 @@ const AdminCenter = () => {
         <div className = {style.container}>
             <h1>Display con los users y posibilidad de editarlos</h1>
             <hr />
-            <UsersDisplay users = {users} />
-            <hr />
             <Link to="/admin">volver al centro de admin</Link>
+            <UsersDisplay users = {users} />
         </div>
     )
 }
