@@ -33,6 +33,7 @@ router.post('/create', (req, res, next)=>{
 
 router.put('/edit/:id', (req, res, next)=>{
     const id = req.params.id
+    
     Houses.update(req.body, { where: { id } })
     .then((propiedadUpdated)=>{
         res.status(200).send(propiedadUpdated)

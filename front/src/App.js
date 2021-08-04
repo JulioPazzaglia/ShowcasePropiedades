@@ -16,6 +16,8 @@ import Login from './containers/Login'
 import Register from './containers/Register'
 import AdminCenter from "./containers/AdminCenter"
 import Users from "./containers/Users"
+import HousesEditor from "./containers/EditorManager"
+import SingleHouseEditor from "./containers/SingleHouseEditor"
 
 function App() {
   const dispatch = useDispatch()
@@ -59,10 +61,24 @@ function App() {
           path="/admin"
           render={() => <AdminCenter/>}
         />
-        {isAdmin && <Route
+        {isAdmin && 
+        <Route
           path="/users"
           render={() => <Users/>}
-        />}
+        />
+        }
+        {isAdmin && 
+        <Route
+          path="/editHouses"
+          render={() => <HousesEditor/>}
+        />
+        }
+        {isAdmin && 
+        <Route
+          path="/edit/propiedades/:id"
+          render={({ match }) => <SingleHouseEditor PropiedadId={match.params.id} />}
+        />
+        }
       </Switch>
 
       <Footer/>

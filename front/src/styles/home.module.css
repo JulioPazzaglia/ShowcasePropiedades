@@ -92,3 +92,36 @@
   flex-wrap: wrap;
   flex-flow: column;
 }
+.description{
+  height: 10%;
+}
+.links{
+  background-color: rgb(85, 85, 85);
+  display: flex;
+  padding: 1%;
+  width: 100%;
+  flex-flow: column;
+}
+.edit{
+  background-color: rgb(85, 85, 85);
+  display: flex;
+  padding: 1%;
+  width: 98%;
+  flex-flow: column;
+}
+.input{
+  background-color: rgb(85, 85, 85);
+  display: flex;
+  padding: 1%;
+  width: 80%;
+  flex-flow: column;
+  align-self: center;
+}
+.change{
+  border-radius: 7px;
+  color: black;
+  background-color: #9d9fa0;
+  padding: 1%;
+  margin: 2%;
+  width: 29%;
+}

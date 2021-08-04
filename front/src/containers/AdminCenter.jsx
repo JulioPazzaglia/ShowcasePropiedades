@@ -31,9 +31,10 @@ const AdminCenter = () => {
             <h2>Capaz tambien va a estar un input para una contrasenia para entrar sin tener "isAdmin"</h2>
 
             {user.isAdmin && (
-                <div>
+                <div className={style.links}>
                     <Link to="/users" className = {style.display}>Editar los users</Link>
-                    <Link to="/users" className = {style.display}>Editar las propiedades</Link>
+                    <hr />
+                    <Link to="/editHouses" className = {style.display}>Editar las propiedades</Link>
                 </div>
             )}
             {user.id && !user.isAdmin && (

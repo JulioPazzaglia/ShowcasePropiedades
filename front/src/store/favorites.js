@@ -5,7 +5,7 @@ export const putFavs = createAsyncThunk("PUT_FAVS", (body) => {
   return axios.put(`/api/favorites/`, body).then(res => res.data)
 })
 export const deleteFavs = createAsyncThunk("DELETE_FAVS", (body) => {
-  return axios.delete(`/api/favorites/${body.userId}/${body.houseId}`, body).then(res => res.data)
+  return axios.delete(`/api/favorites/${body.userId}/${body.houseId}`).then(res => res.data)
 })
 
 const favoritesReducer = createReducer([], {

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 import style from "../styles/home.module.css"
 
-const AdminCenter = () => {
+const User = () => {
 
     const dispatch = useDispatch()
 
@@ -27,4 +27,4 @@ const AdminCenter = () => {
     )
 }
 
-export default AdminCenter;
+export default User;
