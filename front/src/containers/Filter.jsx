@@ -65,7 +65,7 @@ const Filter = (props) => {
 
     return(
         <div className = {style.container}>
-            <h1>casas filtradas:</h1>
+            <h1>Casas filtradas:</h1>
             <button className={style.minMax} onClick = {changeMinMax} >{minMax?"⬇":"⬆"}</button>
             <HouseDisplay propiedades ={casas} filtro = {minMax} AddFavs={AddFavs} DelFavs={DelFavs}/>
         </div>

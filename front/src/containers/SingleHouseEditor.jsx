@@ -23,7 +23,6 @@ const SingleHouseEditor= (props) => {
     const history = useHistory();
 
     const Cambio = (body) => {
-        
         dispatch(putCasa(body))
         .then(()=> history.push(`/editHouses`))
     }

@@ -1,15 +1,19 @@
-import React from "react"
-// import { Link } from "react-router-dom"
+import React, { useState } from "react"
 
 import style from "../styles/home.module.css"
 
 const HouseDisplay= (props) => {
 
     const users = props.users
+    const AdminToggle = props.AdminToggle
+    const UserDelete = props.UserDelete
+
+    const [password, setPassword] = useState("")
 
     return (
         <div>
-            {users.map((user)=>{
+            {!users.length>0 && <h1>No parecen haber users</h1>}
+            {typeof(users)==="object" && users.map((user)=>{
                 return (
                     <div>
                         <hr />
@@ -21,8 +25,18 @@ const HouseDisplay= (props) => {
                             </div>
                             <hr />
                             <div className = {style.item}>
-                                <p>IsAdmin: {String(user.isAdmin)}</p>
-                                <p>delete: {String(user.isAdmin)}</p>
+                                <button className={style.buttons} onClick={()=> {AdminToggle(user.id)}}>{user.isAdmin?"Remove admin":"Make admin"}</button>
+                                <hr />
+                                <form className={style.buttons}>
+                                    <p>Eliminar: </p>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder= "Escibi 'delete' para eliminarlo"
+                                        onChange={e => setPassword(e.target.value)}
+                                    />
+                                    <button className={style.buttons} onClick={()=> {UserDelete(user.id, password)}}>Enviar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
