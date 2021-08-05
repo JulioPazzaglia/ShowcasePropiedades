@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import style from "../styles/home.module.css"
 
-const HouseDisplay= (props) => {
+const UserEdit= (props) => {
 
     const users = props.users
     const AdminToggle = props.AdminToggle
@@ -46,4 +46,4 @@ const HouseDisplay= (props) => {
     )
 }
 
-export default HouseDisplay;
+export default UserEdit;

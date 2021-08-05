@@ -17,9 +17,10 @@ User.init(
     email: {
       type: S.STRING,
       allowNull: false,
+      unique: { msg: 'Email address already in use!' },
       validate: {
         isEmail: true
-      }
+      },
     },
     password: {
       type: S.STRING,

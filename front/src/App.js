@@ -18,6 +18,7 @@ import AdminCenter from "./containers/AdminCenter"
 import Users from "./containers/Users"
 import HousesEditor from "./containers/EditorManager"
 import SingleHouseEditor from "./containers/SingleHouseEditor"
+// import HouseCreateCenter from "./containers/HouseCreateCenter"
 
 function App() {
   const dispatch = useDispatch()
@@ -79,13 +80,17 @@ function App() {
           render={({ match }) => <SingleHouseEditor PropiedadId={match.params.id} />}
         />
         }
+        {isAdmin && 
+        <Route
+          path="/create"
+          // render={() => <HouseCreateCenter/>}
+        />
+        }
       </Switch>
 
       <Footer/>
     </div>
     )
 }
-  
-// recordar poner solo para admin la ruta de comics
   
 export default App

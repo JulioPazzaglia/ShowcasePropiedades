@@ -27,14 +27,16 @@ const AdminCenter = () => {
 
     return (
         <div className = {style.container}>
-            <h1>Aca van a estar los links para todas las funciones admin</h1>
-            <h2>Capaz tambien va a estar un input para una contrasenia para entrar sin tener "isAdmin"</h2>
+            <h1>Aca estan las funciones de admin:</h1>
+            <h2>En caso de no estar loggeado ingresa a una cuenta de administracion</h2>
 
             {user.isAdmin && (
                 <div className={style.links}>
                     <Link to="/users" className = {style.display}>Editar los users</Link>
                     <hr />
                     <Link to="/editHouses" className = {style.display}>Editar las propiedades</Link>
+                    {/* <hr /> */}
+                    {/* <Link to="/create" className = {style.display}>Crear propiedades</Link> */}
                 </div>
             )}
             {user.id && !user.isAdmin && (

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import { userRegister, userLogout } from "../store/user"
+import { getUsers } from "../store/adminUser"
 import style from "../styles/home.module.css"
 
 const Register = () => {
 
   const user = useSelector(state => state.user)
+  const users = useSelector(state => state.adminUsers)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -18,13 +20,27 @@ const Register = () => {
 
   const handleClick = e => {
     e.preventDefault()
-    dispatch(userRegister({ email, password, fullname })).then(({ payload }) => {
-      if (payload){ 
-        alert("Fuiste registrado. Loggeate pra utilizar al maximo la pagina")
-        setTimeout(() => history.push("/login"), 0)
-      }
-      else{alert("Los datos ingresados no son correctos")}
-    })
+    if(email && password && fullname){
+
+      dispatch(getUsers())
+      .then(()=>{
+        if(users.find(element=>element.email===email)){
+          alert("Este email ya esta registrado")
+        }
+        else{
+          dispatch(userRegister({ email, password, fullname })).then(({ payload }) => {
+            if (payload){ 
+              alert("Fuiste registrado. Loggeate pra utilizar al maximo la pagina")
+              setTimeout(() => history.push("/login"), 0)
+            }
+            else{alert("Los datos ingresados no son correctos")}
+          })
+        }
+      })
+    }
+    else{
+      alert("Por favor llena los datos")
+    }
   }
 
   const handleLogout = () => {
