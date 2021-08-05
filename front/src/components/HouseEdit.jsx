@@ -50,14 +50,14 @@ const HouseEdit= (props) => {
                     onChange={e => setPrice(e.target.value)}
                 />
                 <select onChange={e => setLocation(e.target.value)}>
-                    <option value="Belgrano">Belgrano</option>
-                    <option value="Palermo">Palermo</option>
-                    <option value="Recoleta">Recoleta</option>
-                    <option value="Retiro">Retiro</option>
+                    <option selected = {casa.location==="Belgrano"?true:false} value="Belgrano">Belgrano</option>
+                    <option selected = {casa.location==="Palermo"?true:false} value="Palermo">Palermo</option>
+                    <option selected = {casa.location==="Recoleta"?true:false} value="Recoleta">Recoleta</option>
+                    <option selected = {casa.location==="Retiro"?true:false} value="Retiro">Retiro</option>
                 </select>
                 <select onChange={e => setAvailable(e.target.value)}>
-                    <option value={true}>True</option>
-                    <option value={false}>False</option>
+                    <option selected = {casa.available?true:false} value={true}>True</option>
+                    <option selected = {!casa.available?true:false} value={false}>False</option>
                 </select>
                 <div className={style.buttons}>
                     <button className={style.change} onClick = {check}>
