@@ -1,7 +1,12 @@
 const router = require("express").Router()
 const { User } = require("../models")
 
-router.put("/edit/:id", (req, res, next)=>{
+const isAdmin = (req, res, next) => {
+  if (req.user.isAdmin) next()
+  else res.sendStatus(401)
+}
+
+router.put("/edit/:id", isAdmin, (req, res, next)=>{
     User.findByPk(req.params.id)
     .then(user => {
       User.update({ isAdmin: !user.isAdmin },{
@@ -14,13 +19,11 @@ router.put("/edit/:id", (req, res, next)=>{
     })
     .catch(err => next(err))
 })
-    
-const isAdmin = (req, res, next) => {
-    if (req.user.isAdmin) next()
-    else res.sendStatus(401)
-}
+
+
 
 router.delete("/:id", isAdmin, (req, res, next) => {
+  console.log("delete")
     User.destroy({
       where: {
         id: req.params.id

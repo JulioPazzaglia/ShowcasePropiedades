@@ -4,7 +4,7 @@ import UsersDisplay from '../components/UsersDisplay'
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 
-import { getUsers, putAdmin, delUser } from '../store/adminUser'
+import { getUsers, putAdmin, delAdmin } from '../store/adminUser'
 
 import style from "../styles/home.module.css"
 
@@ -17,7 +17,8 @@ const User = () => {
         dispatch(getUsers())
     }, [dispatch])
 
-    const AdminToggle = (id) => {
+    const AdminToggle = (id, e) => {
+        e.preventDefault()
         if(user.id===id){
             alert("No puede quitarse privilegios de admin a uno mismo")
         }
@@ -27,20 +28,20 @@ const User = () => {
         }
     }
 
-    const UserDelete = (id, password) => {
+    const UserDelete = (id, password, e) => {
+        e.preventDefault();
+
         if(user.id===id){
             alert("No podes eliminarte a vos mismo")
         }
         else if(password==="delete"){
-            dispatch(delUser(id))
-            .then(()=>{
-                dispatch(getUsers())
-            })
-            alert("Usuario eliminado")
+            dispatch(delAdmin(id))
+            .then(()=>dispatch(getUsers()))
         }
         else{
             alert("Contraseña incorrecta")
         }
+        e.target.children[1].value = "";
     }
 
     const users = useSelector(state => state.adminUsers)

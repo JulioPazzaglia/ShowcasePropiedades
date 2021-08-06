@@ -41,18 +41,16 @@ const AdminCenter = () => {
             )}
             {user.id && !user.isAdmin && (
                 <div className={style.admin}>
-                    <form onSubmit={handleClick}>
+                    <form onSubmit={handleClick} className = {style.buttons} >
                         <input
                             type="password"
                             name="Password"
                             placeholder="Password"
                             onChange={e => setPassword(e.target.value)}
                         />
-                        <div>
-                            <button className={style.minMax}>
+                        <button>
                             {" "}Make Admin{" "}
-                            </button>
-                        </div>
+                        </button>
                     </form>
                 </div>
             )}

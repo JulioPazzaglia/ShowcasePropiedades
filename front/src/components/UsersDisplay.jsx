@@ -25,9 +25,9 @@ const UserEdit= (props) => {
                             </div>
                             <hr />
                             <div className = {style.item}>
-                                <button className={style.buttons} onClick={()=> {AdminToggle(user.id)}}>{user.isAdmin?"Remove admin":"Make admin"}</button>
+                                <button className={style.buttons} onClick={(e)=> {AdminToggle(user.id, e)}}>{user.isAdmin?"Remove admin":"Make admin"}</button>
                                 <hr />
-                                <form className={style.buttons}>
+                                <form className={style.buttons} onSubmit={(e) => UserDelete(user.id, password, e)}>
                                     <p>Eliminar: </p>
                                     <input
                                         type="text"
@@ -35,7 +35,7 @@ const UserEdit= (props) => {
                                         placeholder= "Escibi 'delete' para eliminarlo"
                                         onChange={e => setPassword(e.target.value)}
                                     />
-                                    <button className={style.buttons} onClick={()=> {UserDelete(user.id, password)}}>Enviar</button>
+                                    <button className={style.buttons}>Enviar</button>
                                 </form>
                             </div>
                         </div>
@@ -45,5 +45,5 @@ const UserEdit= (props) => {
         </div>
     )
 }
-
+// onClick={(e)=> {UserDelete(user.id, password, e)}}
 export default UserEdit;

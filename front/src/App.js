@@ -18,11 +18,12 @@ import AdminCenter from "./containers/AdminCenter"
 import Users from "./containers/Users"
 import HousesEditor from "./containers/EditorManager"
 import SingleHouseEditor from "./containers/SingleHouseEditor"
+import Error from "./containers/Error"
 // import HouseCreateCenter from "./containers/HouseCreateCenter"
 
 function App() {
   const dispatch = useDispatch()
-  const isAdmin = useSelector(state => state.user)
+  const isAdmin = useSelector(state => state.user.isAdmin)
 
   useEffect(() => {
     axios
@@ -86,6 +87,7 @@ function App() {
           // render={() => <HouseCreateCenter/>}
         />
         }
+        <Route render={() => <Error/>}/>
       </Switch>
 
       <Footer/>
