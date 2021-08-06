@@ -6,13 +6,14 @@ const HouseEdit= (props) => {
 
     var casa = props.propiedad;
     const Cambio = props.Cambio;
+    const Eliminar = props.PropiedadesDelete;
 
     const [name, setName] = useState(casa.name)
     const [description, setDescription] = useState(casa.description)
     const [price, setPrice] = useState(casa.price)
     const [location, setLocation] = useState(casa.location)
     const [available, setAvailable] = useState(casa.available)
-
+    const [password, setPassword] = useState("")
 
     const check = () => {
         var body = {id: casa.id}
@@ -61,6 +62,16 @@ const HouseEdit= (props) => {
                         {" "}Establecer cambios{" "}
                     </button>
                 </div>
+                <form className={style.buttons} onSubmit={(e) => Eliminar(casa.id, password, e)}>
+                    <p>Eliminar: </p>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder= "Escibi 'delete' para eliminarlo"
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <button className={style.buttons}>Enviar</button>
+                </form>
             </div>
         </div>
     )
