@@ -7,6 +7,7 @@ import favoritesReducer from "./favorites"
 
 //admin side
 import adminUserReducer from "./adminUser"
+import adminPropiedadesReducer from "./adminPropiedades"
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     category: categoryReducer,
     adminUsers: adminUserReducer,
     favorites: favoritesReducer,
+    adminPropiedades: adminPropiedadesReducer,
   }
 })
 

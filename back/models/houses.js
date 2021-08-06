@@ -31,8 +31,7 @@ Houses.init(
       allowNull: false
     },
     image: {
-      type: S.STRING,
-      allowNull: false
+      type: S.STRING
     },
     available: {
       type: S.BOOLEAN,

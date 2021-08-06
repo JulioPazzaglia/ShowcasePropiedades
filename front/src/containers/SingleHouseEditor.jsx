@@ -3,10 +3,9 @@ import style from "../styles/home.module.css"
 import { Link, useHistory } from "react-router-dom"
 
 import HouseEdit from "../components/HouseEdit"
-import { putCasa } from "../store/casa"
+import { putCasa, getCasa } from "../store/casa"
 
 import { useSelector, useDispatch } from "react-redux"
-import { getCasa } from "../store/casa"
 
 const SingleHouseEditor= (props) => {
 

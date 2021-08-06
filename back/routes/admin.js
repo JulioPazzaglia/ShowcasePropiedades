@@ -6,7 +6,7 @@ const isAdmin = (req, res, next) => {
   else res.sendStatus(401)
 }
 
-router.put("/edit/:id", isAdmin, (req, res, next)=>{
+router.put("/edit/:id", (req, res, next)=>{
     User.findByPk(req.params.id)
     .then(user => {
       User.update({ isAdmin: !user.isAdmin },{
@@ -23,7 +23,6 @@ router.put("/edit/:id", isAdmin, (req, res, next)=>{
 
 
 router.delete("/:id", isAdmin, (req, res, next) => {
-  console.log("delete")
     User.destroy({
       where: {
         id: req.params.id

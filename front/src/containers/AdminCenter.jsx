@@ -35,8 +35,8 @@ const AdminCenter = () => {
                     <Link to="/users" className = {style.display}>Editar los users</Link>
                     <hr />
                     <Link to="/editHouses" className = {style.display}>Editar las propiedades</Link>
-                    {/* <hr /> */}
-                    {/* <Link to="/create" className = {style.display}>Crear propiedades</Link> */}
+                    <hr />
+                    <Link to="/create" className = {style.display}>Crear propiedades</Link>
                 </div>
             )}
             {user.id && !user.isAdmin && (

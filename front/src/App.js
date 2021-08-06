@@ -19,7 +19,7 @@ import Users from "./containers/Users"
 import HousesEditor from "./containers/EditorManager"
 import SingleHouseEditor from "./containers/SingleHouseEditor"
 import Error from "./containers/Error"
-// import HouseCreateCenter from "./containers/HouseCreateCenter"
+import HouseCreateCenter from "./containers/HouseCreateCenter"
 
 function App() {
   const dispatch = useDispatch()
@@ -84,7 +84,7 @@ function App() {
         {isAdmin && 
         <Route
           path="/create"
-          // render={() => <HouseCreateCenter/>}
+          render={() => <HouseCreateCenter/>}
         />
         }
         <Route render={() => <Error/>}/>

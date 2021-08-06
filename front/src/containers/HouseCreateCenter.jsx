@@ -1,42 +1,38 @@
-// import React from "react"
-// import style from "../styles/home.module.css"
-// import { Link} from "react-router-dom"
+import React from "react"
+import style from "../styles/home.module.css"
+import {Link} from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 
-// // import HouseEdit from "../components/HouseEdit"
-// // import { putCasa } from "../store/casa"
+import HouseCreate from "../components/HouseCreator"
 
-// // import { useSelector, useDispatch } from "react-redux"
-// // import { getCasa } from "../store/casa"
-// import HouseCreate from "../components/HouseCreator"
+import {postPropiedades} from "../store/adminPropiedades"
 
-// const houseCreate= (props) => {
 
-//     // const id = props.PropiedadId;
+const HouseCreator= () => {
 
-//     // const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
 
-//     // useEffect(() => {
-//     //     dispatch(getCasa(id))
-//     // }, [dispatch, id])
+    const Create = (body, e) => {
+        e.preventDefault()
+        if(user.isAdmin){
+            dispatch(postPropiedades(body))
+            .then(()=>alert("La propiedad fue creada"))
+        }
+        else{
+            alert("No tenes la autorizacion para crear propiedades")
+        }
+    }
 
-//     // const casaShow = useSelector(state => state.casa)
+    return (
+        <div className = {style.container}>
+            <h1> Creador de casa</h1>
+            <hr />
+            <Link to="/editHouses" className = {style.display}>Ver listado de propiedades</Link>
+            <hr />
+            <HouseCreate create = {Create} />
+        </div>
+    )
+}
 
-//     // const history = useHistory();
-
-//     // const Cambio = (body) => {
-//     //     dispatch(putCasa(body))
-//     //     .then(()=> history.push(`/editHouses`))
-//     // }
-
-//     return (
-//         <div className = {style.container}>
-//             <h1>Centro de creacion de propiedades</h1>
-//             <hr />
-//             <Link to="/editHouses" className = {style.display}>Volver a seleccionar las casas para editar</Link>
-//             <hr />
-//             <HouseCreate/>
-//         </div>
-//     )
-// }
-
-// export default HouseCreate;
+export default HouseCreator;
